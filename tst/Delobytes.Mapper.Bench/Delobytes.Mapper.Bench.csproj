@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Build">
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net461</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package References">
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Delobytes.Mapper.csproj" />
+  </ItemGroup>
+
+</Project>
