@@ -13,7 +13,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            Assert.ThrowsAsync<ArgumentNullException>("source", () => mapper.Map(null));
+            Assert.ThrowsAsync<ArgumentNullException>("source", () => mapper.MapAsync(null));
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            MapTo to = await mapper.Map(new MapFrom() {Property = 1});
+            MapTo to = await mapper.MapAsync(new MapFrom() {Property = 1});
 
             Assert.Equal(1, to.Property);
         }
@@ -31,7 +31,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            MapTo[] to = await mapper.MapArray(new MapFrom[0]);
+            MapTo[] to = await mapper.MapArrayAsync(new MapFrom[0]);
 
             Assert.IsType<MapTo[]>(to);
             Assert.Empty(to);
@@ -42,7 +42,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            MapTo[] to = await mapper.MapArray(
+            MapTo[] to = await mapper.MapArrayAsync(
                 new MapFrom[]
                 {
                     new MapFrom() {Property = 1},
@@ -60,7 +60,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            List<MapTo> to = await mapper.MapCollection(
+            List<MapTo> to = await mapper.MapCollectionAsync(
                 new MapFrom[0],
                 new List<MapTo>());
 
@@ -73,7 +73,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            List<MapTo> to = await mapper.MapCollection(
+            List<MapTo> to = await mapper.MapCollectionAsync(
                 new MapFrom[]
                 {
                     new MapFrom() {Property = 1},
@@ -92,7 +92,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            Collection<MapTo> to = await mapper.MapCollection(new MapFrom[0]);
+            Collection<MapTo> to = await mapper.MapCollectionAsync(new MapFrom[0]);
 
             Assert.IsType<Collection<MapTo>>(to);
             Assert.Empty(to);
@@ -103,7 +103,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            Collection<MapTo> to = await mapper.MapCollection(
+            Collection<MapTo> to = await mapper.MapCollectionAsync(
                 new MapFrom[]
                 {
                     new MapFrom() {Property = 1},
@@ -121,7 +121,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            List<MapTo> to = await mapper.MapList(
+            List<MapTo> to = await mapper.MapListAsync(
                 new MapFrom[0]);
 
             Assert.IsType<List<MapTo>>(to);
@@ -133,7 +133,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            List<MapTo> to = await mapper.MapList(
+            List<MapTo> to = await mapper.MapListAsync(
                 new MapFrom[]
                 {
                     new MapFrom() {Property = 1},
@@ -151,7 +151,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            ObservableCollection<MapTo> to = await mapper.MapObservableCollection(new MapFrom[0]);
+            ObservableCollection<MapTo> to = await mapper.MapObservableCollectionAsync(new MapFrom[0]);
 
             Assert.IsType<ObservableCollection<MapTo>>(to);
             Assert.Empty(to);
@@ -162,7 +162,7 @@ namespace Delobytes.Mapper.Test
         {
             AsyncMapper mapper = new AsyncMapper();
 
-            ObservableCollection<MapTo> to = await mapper.MapObservableCollection(
+            ObservableCollection<MapTo> to = await mapper.MapObservableCollectionAsync(
                 new MapFrom[]
                 {
                     new MapFrom() {Property = 1},

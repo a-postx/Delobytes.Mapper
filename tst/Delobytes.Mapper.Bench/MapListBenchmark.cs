@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 using Delobytes.Mapper.Bench.Mapping;
 using Delobytes.Mapper.Bench.Models;
 
 namespace Delobytes.Mapper.Bench
 {
     [KeepBenchmarkFiles]
-    [ClrJob]
-    [CoreJob]
+    [SimpleJob(RuntimeMoniker.Net60)]
     [MinColumn]
     [MaxColumn]
     [HtmlExporter]
@@ -70,7 +70,7 @@ namespace Delobytes.Mapper.Bench
         }
 
         [Benchmark]
-        public List<MapTo> BoxedMapper() => _boilerplateMapper.MapList(_mapFrom);
+        public List<MapTo> DelobytesMapper() => _boilerplateMapper.MapList(_mapFrom);
 
         [Benchmark]
         public List<MapTo> Automapper() => _automapper.Map<List<MapTo>>(_mapFrom);

@@ -16,9 +16,6 @@ namespace Delobytes.Mapper
         /// Create instance of type <typeparamref name="T"/> by calling it's parameterless constructor.
         /// </summary>
         /// <returns>Instance of type <typeparamref name="T"/>.</returns>
-        public static T CreateInstance()
-        {
-            return CreateInstanceFunc();
-        }
+        public static T CreateInstance() => CreateInstanceFunc();
     }
 }

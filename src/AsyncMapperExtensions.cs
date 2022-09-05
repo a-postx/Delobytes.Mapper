@@ -21,7 +21,7 @@ namespace Delobytes.Mapper
         /// <returns>Mapped object of type <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator" /> or <paramref name="source" /> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination> Map<TSource, TDestination>(
+        public static async Task<TDestination> MapAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSource source)
             where TDestination : new()
@@ -37,7 +37,7 @@ namespace Delobytes.Mapper
             }
 
             TDestination destination = Factory<TDestination>.CreateInstance();
-            await translator.Map(source, destination);
+            await translator.MapAsync(source, destination);
 
             return destination;
         }
@@ -56,7 +56,7 @@ namespace Delobytes.Mapper
         /// <returns>Array of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination[]> MapArray<TSourceCollection, TSource, TDestination>(
+        public static async Task<TDestination[]> MapArrayAsync<TSourceCollection, TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSourceCollection source,
             TDestination[] destination,
@@ -86,7 +86,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination[i] = destinationItem;
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
 
                 ++i;
             }
@@ -107,7 +107,7 @@ namespace Delobytes.Mapper
         /// <returns>Array of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination[]> MapArray<TSource, TDestination>(
+        public static async Task<TDestination[]> MapArrayAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             List<TSource> source)
             where TDestination : new()
@@ -130,7 +130,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination[i] = destinationItem;
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -149,7 +149,7 @@ namespace Delobytes.Mapper
         /// <returns>Array of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination[]> MapArray<TSource, TDestination>(
+        public static async Task<TDestination[]> MapArrayAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             Collection<TSource> source)
             where TDestination : new()
@@ -173,7 +173,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination[i] = destinationItem;
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -192,7 +192,7 @@ namespace Delobytes.Mapper
         /// <returns>Array of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination[]> MapArray<TSource, TDestination>(
+        public static async Task<TDestination[]> MapArrayAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSource[] source)
             where TDestination : new()
@@ -216,7 +216,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination[i] = destinationItem;
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -235,7 +235,7 @@ namespace Delobytes.Mapper
         /// <returns>Aarray of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestination[]> MapArray<TSource, TDestination>(
+        public static async Task<TDestination[]> MapArrayAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             IEnumerable<TSource> source)
             where TDestination : new()
@@ -259,7 +259,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination[i] = destinationItem;
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
                 ++i;
             }
 
@@ -284,7 +284,7 @@ namespace Delobytes.Mapper
         /// </returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator" /> or <paramref name="source" /> is
         /// <c>null</c>.</exception>
-        public static async Task<TDestinationCollection> MapCollection<TSourceCollection, TSource, TDestinationCollection, TDestination>(
+        public static async Task<TDestinationCollection> MapCollectionAsync<TSourceCollection, TSource, TDestinationCollection, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSourceCollection source,
             TDestinationCollection destination)
@@ -315,7 +315,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Add(destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
                 ++i;
             }
 
@@ -335,7 +335,7 @@ namespace Delobytes.Mapper
         /// <returns>Collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<Collection<TDestination>> MapCollection<TSource, TDestination>(
+        public static async Task<Collection<TDestination>> MapCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             List<TSource> source)
             where TDestination : new()
@@ -359,7 +359,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -378,7 +378,7 @@ namespace Delobytes.Mapper
         /// <returns>Collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<Collection<TDestination>> MapCollection<TSource, TDestination>(
+        public static async Task<Collection<TDestination>> MapCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             Collection<TSource> source)
             where TDestination : new()
@@ -402,7 +402,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -421,7 +421,7 @@ namespace Delobytes.Mapper
         /// <returns>Collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<Collection<TDestination>> MapCollection<TSource, TDestination>(
+        public static async Task<Collection<TDestination>> MapCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSource[] source)
             where TDestination : new()
@@ -445,7 +445,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -464,7 +464,7 @@ namespace Delobytes.Mapper
         /// <returns>Collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<Collection<TDestination>> MapCollection<TSource, TDestination>(
+        public static async Task<Collection<TDestination>> MapCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             IEnumerable<TSource> source)
             where TDestination : new()
@@ -488,7 +488,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
                 ++i;
             }
 
@@ -508,7 +508,7 @@ namespace Delobytes.Mapper
         /// <returns>List of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<List<TDestination>> MapList<TSource, TDestination>(
+        public static async Task<List<TDestination>> MapListAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             List<TSource> source)
             where TDestination : new()
@@ -532,7 +532,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -551,7 +551,7 @@ namespace Delobytes.Mapper
         /// <returns>List of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<List<TDestination>> MapList<TSource, TDestination>(
+        public static async Task<List<TDestination>> MapListAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             Collection<TSource> source)
             where TDestination : new()
@@ -575,7 +575,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -594,7 +594,7 @@ namespace Delobytes.Mapper
         /// <returns>List of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<List<TDestination>> MapList<TSource, TDestination>(
+        public static async Task<List<TDestination>> MapListAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSource[] source)
             where TDestination : new()
@@ -618,7 +618,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -637,7 +637,7 @@ namespace Delobytes.Mapper
         /// <returns>List of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<List<TDestination>> MapList<TSource, TDestination>(
+        public static async Task<List<TDestination>> MapListAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             IEnumerable<TSource> source)
             where TDestination : new()
@@ -661,7 +661,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
                 ++i;
             }
 
@@ -681,7 +681,7 @@ namespace Delobytes.Mapper
         /// <returns>Observable collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<ObservableCollection<TDestination>> MapObservableCollection<TSource, TDestination>(
+        public static async Task<ObservableCollection<TDestination>> MapObservableCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             List<TSource> source)
             where TDestination : new()
@@ -705,7 +705,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -724,7 +724,7 @@ namespace Delobytes.Mapper
         /// <returns>Observable collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<ObservableCollection<TDestination>> MapObservableCollection<TSource, TDestination>(
+        public static async Task<ObservableCollection<TDestination>> MapObservableCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             Collection<TSource> source)
             where TDestination : new()
@@ -748,7 +748,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -767,7 +767,7 @@ namespace Delobytes.Mapper
         /// <returns>Observable collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<ObservableCollection<TDestination>> MapObservableCollection<TSource, TDestination>(
+        public static async Task<ObservableCollection<TDestination>> MapObservableCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             TSource[] source)
             where TDestination : new()
@@ -791,7 +791,7 @@ namespace Delobytes.Mapper
                 TSource sourceItem = source[i];
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
             }
 
             await Task.WhenAll(tasks);
@@ -810,7 +810,7 @@ namespace Delobytes.Mapper
         /// <returns>Observable collection of <typeparamref name="TDestination"/>.</returns>
         /// <exception cref="ArgumentNullException">The <paramref name="translator"/> or <paramref name="source"/> is
         /// <c>null</c>.</exception>
-        public static async Task<ObservableCollection<TDestination>> MapObservableCollection<TSource, TDestination>(
+        public static async Task<ObservableCollection<TDestination>> MapObservableCollectionAsync<TSource, TDestination>(
             this IAsyncMapper<TSource, TDestination> translator,
             IEnumerable<TSource> source)
             where TDestination : new()
@@ -834,7 +834,7 @@ namespace Delobytes.Mapper
             {
                 TDestination destinationItem = Factory<TDestination>.CreateInstance();
                 destination.Insert(i, destinationItem);
-                tasks[i] = translator.Map(sourceItem, destinationItem);
+                tasks[i] = translator.MapAsync(sourceItem, destinationItem);
                 ++i;
             }
 

@@ -15,6 +15,6 @@ namespace Delobytes.Mapper
         /// <param name="source">Source object to map from.</param>
         /// <param name="destination">Destination object to map to.</param>
         /// <returns>A task representing the operation.</returns>
-        Task Map(TSource source, TDestination destination);
+        Task MapAsync(TSource source, TDestination destination);
     }
 }
