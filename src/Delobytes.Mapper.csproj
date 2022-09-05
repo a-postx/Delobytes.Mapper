@@ -6,8 +6,11 @@
     <Authors>Alexey Yakubin</Authors>
     <Company>Delobytes</Company>
     <Description>Объектный мапер.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.0.0.0-alpha1</Version>
+	<PackageProjectUrl>https://github.com/a-postx/Delobytes.Mapper</PackageProjectUrl>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<RepositoryUrl>https://github.com/a-postx/Delobytes.Mapper.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+    <Version>2.0.0.0-alpha2</Version>
 	<GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Nullable>enable</Nullable>
   </PropertyGroup>
